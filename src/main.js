@@ -2,5 +2,7 @@
 import { marquee } from "./marquee.js";
 import { tab } from "./tab.js";
 
+// 引入css文件
+import "../style/index.css";
 marquee();
 tab();
