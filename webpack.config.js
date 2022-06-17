@@ -33,6 +33,10 @@ module.exports = {
         // use内是从右向左执行，所以先用css-loader进行转换，再用style-loader来建立样式链接
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.less/i,
+        use: ["style-loader", "css-loader", "less-loader"],
+      },
     ],
   },
 };
