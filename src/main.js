@@ -8,6 +8,8 @@ import "../style/index.css";
 import "../style/index.less";
 // 引入字体图标库
 import "../assets/fonts/iconfont.css";
+// 引入vue文件
+import "../src/app.vue";
 /* 
     创建img元素并引入图片
 */

@@ -2,11 +2,12 @@
 const { join } = require("path");
 //引入生成html插件(引入的是构造函数)
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
+// 引入vue插件
+const { VueLoaderPlugin } = require("vue-loader");
 // webpack向外暴露遵循COMMONJS规范
 module.exports = {
   // 1、模式，有生产模式和开发环境（production/development）
-  mode: "production",
+  mode: "development",
   // 2、定义初始化入口（相对路径）
   entry: "./src/main.js",
   // 3、定义导出路径（绝对路径）+ 需要引入path模块
@@ -24,6 +25,7 @@ module.exports = {
       // 指定作为模板的html文件，否则会重新生成
       template: join(__dirname, "./public/index.html"),
     }),
+    new VueLoaderPlugin(),
   ],
   // 5、因为webpack只能解析js和json文件，所以需要引入loader来拓展其他格式文件
   module: {
@@ -61,6 +63,14 @@ module.exports = {
           filename: "fonts/[hash:7][ext]",
         },
       },
+      {
+        test: /\.js/i,
+        use: ["babel-loader"],
+      },
+      {
+        test: /\.vue$/,
+        loader: "vue-loader",
+      },
     ],
   },
   // 6、配置webpack-serve
@@ -68,6 +78,6 @@ module.exports = {
     // 是否自动打开浏览器
     open: true,
     // 指定端口，0-65535
-    port: 65535,
+    port: 30000,
   },
 };
