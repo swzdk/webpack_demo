@@ -1,6 +1,8 @@
 // 引入path模块，又因为基本只用join命令，所以可以解构
 const { join } = require("path");
-// import path from "path";
+//引入生成html插件(引入的是构造函数)
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 // webpack向外暴露遵循COMMONJS规范
 module.exports = {
   // 1、模式，有生产模式和开发环境（production/development）
@@ -16,4 +18,11 @@ module.exports = {
     // 导出时是否先清除目录
     clean: true,
   },
+  // 4、导入生成html插件
+  plugins: [
+    new HtmlWebpackPlugin({
+      // 指定作为模板的html文件，否则会重新生成
+      template: join(__dirname, "./public/index.html"),
+    }),
+  ],
 };
