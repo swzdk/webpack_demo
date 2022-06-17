@@ -1,0 +1,15 @@
+{
+  "name": "webpack_homework",
+  "version": "1.0.0",
+  "description": "webpack作业day01",
+  "main": "index.js",
+  "author": "swzdk <cw8226240@163.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "scripts": {
+    "build": "webpack"
+  }
+}
