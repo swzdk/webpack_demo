@@ -52,6 +52,15 @@ module.exports = {
           filename: "images/[hash:7][ext]",
         },
       },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)/i,
+        // 字体图标直接生成图片
+        type: "asset/resource",
+        generator: {
+          // 相对路径在lib中，设置图片名字，hash表示随机字符，ext表示原始的后缀名
+          filename: "fonts/[hash:7][ext]",
+        },
+      },
     ],
   },
   // 6、配置webpack-serve

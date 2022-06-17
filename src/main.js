@@ -6,7 +6,8 @@ import { tab } from "./tab.js";
 import "../style/index.css";
 // 引入less文件
 import "../style/index.less";
-
+// 引入字体图标库
+import "../assets/fonts/iconfont.css";
 /* 
     创建img元素并引入图片
 */
