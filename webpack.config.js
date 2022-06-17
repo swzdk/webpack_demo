@@ -39,4 +39,11 @@ module.exports = {
       },
     ],
   },
+  // 6、配置webpack-serve
+  devServer: {
+    // 是否自动打开浏览器
+    open: true,
+    // 指定端口，0-65535
+    port: 65535,
+  },
 };
