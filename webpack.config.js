@@ -37,6 +37,21 @@ module.exports = {
         test: /\.less/i,
         use: ["style-loader", "css-loader", "less-loader"],
       },
+      {
+        test: /\.(gif|png)/i,
+        // 类型有三种，resource、inline、asset，选择asset自动分配
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            // 单位为字节，设置大于2KB生成图片
+            maxSize: 2 * 1024,
+          },
+        },
+        generator: {
+          // 相对路径在lib中，设置图片名字，hash表示随机字符，ext表示原始的后缀名
+          filename: "images/[hash:7][ext]",
+        },
+      },
     ],
   },
   // 6、配置webpack-serve
