@@ -6,5 +6,26 @@ import { tab } from "./tab.js";
 import "../style/index.css";
 // 引入less文件
 import "../style/index.less";
+
+/* 
+    创建img元素并引入图片
+*/
+
+// 1、获取图片路径
+import gifSrc from "../assets/1.gif";
+import pngSrc from "../assets/logo_small.png";
+
+// 2、创建dom元素
+const gif = document.createElement("img");
+const png = document.createElement("img");
+
+// 3、引入图片
+gif.src = gifSrc;
+png.src = pngSrc;
+
+// 4、在body中追加dom元素
+document.body.appendChild(gif);
+document.body.appendChild(png);
+
 marquee();
 tab();
