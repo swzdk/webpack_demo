@@ -14,7 +14,7 @@ module.exports = {
     // path：导出文件路径，一般导出到lib文件夹
     path: join(__dirname, "./lib"),
     // filename：导出文件名
-    filename: "webpack_demo.js",
+    filename: "index.js",
     // 导出时是否先清除目录
     clean: true,
   },
@@ -25,4 +25,14 @@ module.exports = {
       template: join(__dirname, "./public/index.html"),
     }),
   ],
+  // 5、因为webpack只能解析js和json文件，所以需要引入loader来拓展其他格式文件
+  module: {
+    rules: [
+      {
+        test: /\.css/i,
+        // use内是从右向左执行，所以先用css-loader进行转换，再用style-loader来建立样式链接
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
 };
