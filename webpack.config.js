@@ -4,6 +4,8 @@ const { join } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // 引入vue插件
 const { VueLoaderPlugin } = require("vue-loader");
+// 引入mini-css-extract-plugin插件
+const cssExtractPlugin = require("mini-css-extract-plugin");
 // webpack向外暴露遵循COMMONJS规范
 module.exports = {
   // 1、模式，有生产模式和开发环境（production/development）
@@ -26,6 +28,9 @@ module.exports = {
       template: join(__dirname, "./public/index.html"),
     }),
     new VueLoaderPlugin(),
+    new cssExtractPlugin({
+      filename: "index.css",
+    }),
   ],
   // 5、因为webpack只能解析js和json文件，所以需要引入loader来拓展其他格式文件
   module: {
@@ -33,11 +38,11 @@ module.exports = {
       {
         test: /\.css/i,
         // use内是从右向左执行，所以先用css-loader进行转换，再用style-loader来建立样式链接
-        use: ["style-loader", "css-loader"],
+        use: [cssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.less/i,
-        use: ["style-loader", "css-loader", "less-loader"],
+        use: [cssExtractPlugin.loader, "css-loader", "less-loader"],
       },
       {
         test: /\.(gif|png)/i,
